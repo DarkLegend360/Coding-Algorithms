@@ -18,14 +18,18 @@ int main() {
         ptr->next=new Node(x);
         ptr=ptr->next;
     }
-    int K=2;
-    Node *ptr1=head->next,*ptr2=head->next;
-    int count=0;
-    while(ptr1!=NULL) {
-        if(count++>=K) {
-            ptr2=ptr2->next;
-        }
+    //Middle Element Removal
+    Node *ptr1=head->next,*ptr2=head->next,*prev=NULL;
+    while(ptr2->next!=NULL && ptr2->next->next!=NULL) {
+        ptr2=ptr2->next->next;
+        prev=ptr1;
         ptr1=ptr1->next;
     }
-    cout<<"Result:"<<ptr2->value<<endl;
+    prev->next=ptr1->next;
+    //Display
+    ptr=head->next;
+    while(ptr!=NULL) {
+        cout<<ptr->value<<endl;
+        ptr=ptr->next;
+    }
 }
