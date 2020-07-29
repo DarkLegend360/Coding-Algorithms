@@ -4,12 +4,15 @@ using namespace std;
 //max Value Of
 // a[i]-a[j]+a[k]
 // such that i<j<k
+//and a[i]<a[j]<a[k]
+
 
 
 int main() {
     int n=5;
     vector<int> arr={4, 8, 9, 2, 20};
     vector<int> T1(n+1,INT_MIN),T2(n,INT_MIN),T3(n-1,INT_MIN),T4(n-2,INT_MIN);
+    sort(arr.begin(),arr.end());
     for(int i=n-1;i>=0;i--)
         T1[i]=max(T1[i+1],arr[i]);
     for(int i=n-2;i>=0;i--)
