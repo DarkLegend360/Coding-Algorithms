@@ -13,11 +13,18 @@ void quickSort(vector<int> &arr,int startIdx,int endIdx) {
             leftIdx++;
         if(arr[rightIdx]>= arr[pivIdx])
             rightIdx--;
+    cout<<arr[leftIdx]<<" "<<leftIdx<<endl;
+    cout<<arr[rightIdx]<<" "<<rightIdx<<endl;
     }
+        for(auto x:arr)
+        cout<<x<<" ";
+    cout<<endl;
     swap(arr[pivIdx],arr[rightIdx]);
+    for(auto x:arr)
+        cout<<x<<" ";
+    cout<<endl;
     quickSort(arr,startIdx,rightIdx-1);
     quickSort(arr,rightIdx+1,endIdx);
-    //Find Smaller side and perform it first (idk xD)
 }
 
 int main() {
@@ -27,3 +34,7 @@ int main() {
         cout<<x<<" ";
     cout<<endl;
 }
+
+// 5,  7,3,2,76,9,0,1,6,13,34,21
+// 5,  1,3,2,76,9,0,7,6,13,34,21
+// 5,  1,3,2,0,9,76,7,6,13,34,21
