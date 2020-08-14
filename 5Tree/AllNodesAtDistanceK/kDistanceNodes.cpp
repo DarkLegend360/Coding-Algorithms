@@ -1,7 +1,3 @@
-//Map should have reference to objects rather than the object
-//UNSOLVED 
-//Using Hash Table;
-
 #include <bits/stdc++.h>
 using namespace std;
 class Node {
@@ -13,7 +9,7 @@ class Node {
     }
 };
 
-void trav(Node *root,unordered_map<Node*,Node*> &mp)
+void trav(Node *&root,unordered_map<Node*,Node*> &mp)
 {
      if(root==NULL) return;
      if(root->left!=NULL) {
@@ -25,7 +21,7 @@ void trav(Node *root,unordered_map<Node*,Node*> &mp)
          trav(root->right,mp);
      }
  }
-
+//BFS method
 int main() {
     Node *root = new Node(5);
     root->left = new Node(3);
@@ -42,7 +38,7 @@ int main() {
     Node *start = root->left;//SPECIFY THE SOURCE NODE
     int K=1;//SPECIFY K DISTANCE
 
-    trav(start,mp);
+    trav(root,mp);
     st.insert(start);
     int level=0;
     q.push(start);
@@ -51,9 +47,7 @@ int main() {
         for(int i=0;i<len;i++) {
             Node *cur = q.front();
             q.pop();
-            cout<<(mp.find(cur)!=mp.end()?"yes":"no")<<endl;
             if(mp.find(cur)!=mp.end() && st.find(mp[cur])==st.end()){
-                cout<<"FLAG"<<endl;
                 q.push(mp[cur]);
                 st.insert(mp[cur]);
             }
@@ -76,3 +70,29 @@ int main() {
     }
     return 0;
 }
+
+//DFS method
+// void helper(Node *root,unordered_map<Node*,Node*> &mp,unordered_set<Node*> &st,vector<int> &res,int K) {
+//     if(!root) return;
+//     if(st.find(root)!=st.end()) return;
+//     st.insert(root);
+//     if(K==0) {
+//         res.push_back(root->value);
+//         return;
+//     }
+//     helper(root->left,mp,st,res,K-1);
+//     helper(root->right,mp,st,res,K-1);
+//     if(mp.find(root)!=mp.end())
+//         helper(mp[root],mp,st,res,K-1);
+// }
+    
+    
+// vector<int> distanceK(Node* root, Node* target, int K) {
+//     if(!root) return {};
+//     vector<int> res;
+//     unordered_map<Node*,Node*> mp;
+//     unordered_set<Node*> st;
+//     trav(root,mp);
+//     helper(target,mp,st,res,K);
+//     return res;
+// }
