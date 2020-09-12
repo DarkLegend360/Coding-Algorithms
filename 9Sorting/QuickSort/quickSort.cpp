@@ -16,13 +16,7 @@ void quickSort(vector<int> &arr,int startIdx,int endIdx) {
     cout<<arr[leftIdx]<<" "<<leftIdx<<endl;
     cout<<arr[rightIdx]<<" "<<rightIdx<<endl;
     }
-        for(auto x:arr)
-        cout<<x<<" ";
-    cout<<endl;
     swap(arr[pivIdx],arr[rightIdx]);
-    for(auto x:arr)
-        cout<<x<<" ";
-    cout<<endl;
     quickSort(arr,startIdx,rightIdx-1);
     quickSort(arr,rightIdx+1,endIdx);
 }

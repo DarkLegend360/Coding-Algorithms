@@ -21,13 +21,12 @@ void knapSack(vector<vector<int>> arr,int c) {
     int i=n;
     int j=c;
     vector<int> seq;
-    while(i>0 & j>0) {
+    while(i>0 && j>0) {
         if(dp[i][j]==dp[i-1][j])
             i--;
         else{
-            seq.insert(seq.begin(),i-1);
+            seq.insert(seq.begin(),arr[i-1][0]);
             j-=arr[i-1][1];
-            i--;
         }
     }
     for(auto x:seq)
