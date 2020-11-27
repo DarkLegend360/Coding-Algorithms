@@ -97,7 +97,7 @@ int getProductionIndex(char stringChar,char stackTopChar) {
             return i;
     for(int i=0;i<productionCount;i++) 
         if(production[i][0]==stackTopChar && production[i][2]=='#')
-             return -1;
+            return -1;
     for(int i=0;i<productionCount;i++) 
         if(production[i][0]==stackTopChar)
              return i;
@@ -144,43 +144,39 @@ void stringValidation() {
                 stackTopOne--;
             } else {
                 printf("-------------------------------------------------\n");
-                printf("------------> Invalid String <------------\n");
+                printf("---------------> Invalid String <----------------\n");
                 return;
             }
         }
         if(idx==stringLength) {
             printf("-------------------------------------------------\n");
-            printf("------------> Valid String <------------\n");
+            printf("----------------> Valid String <-----------------\n");
             return;
         }
     }
 }
 
+void printParsingTable() {
+
+}
+
 void main() {
     //-------------|Input Here|-------------//
     productionCount=6;
+    // strcpy(production[0], "S=A"); 
+    // strcpy(production[1], "A=aBC"); 
+    // strcpy(production[2], "C=dC"); 
+    // strcpy(production[3], "C=#"); 
+    // strcpy(production[4], "B=b"); 
+    // strcpy(production[5], "E=g"); 
+    // strcpy(inputString,"abd$");
     strcpy(production[0], "S=A"); 
     strcpy(production[1], "A=aBC"); 
     strcpy(production[2], "C=dC"); 
     strcpy(production[3], "C=#"); 
     strcpy(production[4], "B=b"); 
     strcpy(production[5], "E=g"); 
-
-    // strcpy(production[0], "S=aABb"); 
-    // strcpy(production[1], "A=c"); 
-    // strcpy(production[2], "A=#"); 
-    // strcpy(production[3], "B=d");
-    // strcpy(production[4], "B=#");  
-
-
-    // strcpy(production[0], "E=TR"); 
-    // strcpy(production[1], "R=+TR"); 
-    // strcpy(production[2], "R=#"); 
-    // strcpy(production[3], "T=FY"); 
-    // strcpy(production[4], "Y=*FY"); 
-    // strcpy(production[5], "Y=#"); 
-    // strcpy(production[6], "F=(E)"); 
-    // strcpy(production[7], "F=i"); 
+    strcpy(inputString,"abd$");
     //-------------|Input Ends|-------------//
     for(int i=0;i<productionCount;i++) {
         if((i>0) && (production[i][0]==production[i-1][0]))
@@ -195,7 +191,7 @@ void main() {
     }
     printFirstTable();
     printFollowTable();
-    strcpy(inputString,"abd$");
     for(stringLength=0;inputString[stringLength]!='\0';stringLength++);
+    //printParsingTable();
     stringValidation();
 }

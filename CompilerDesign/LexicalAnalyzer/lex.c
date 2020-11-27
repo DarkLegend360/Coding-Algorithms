@@ -19,7 +19,7 @@ bool isValidDelimiter(char s) {
         return true;
         default: return false;
     }
-}
+}// Add printf,else and x= not working
 bool isValidNumber(char* str) 
 { 
     int len = strlen(str); 
@@ -90,6 +90,9 @@ void processString(char *str) {
     rightIdx=0;
     int size = strlen(str);
     while(rightIdx<size) {
+        if(((curChar=='='||curChar=='+'||isValidOperator(curChar)) && state==19)) {
+            printToken(str);
+        }
         if(isValidOperator(curChar)) {
             printf("< operator , %c >\n",curChar);
             rightIdx++;
@@ -110,6 +113,14 @@ void processString(char *str) {
                         state=1;
                         break;
                     }
+                    case 'e': {
+                        state=21;
+                        break;
+                    }
+                    case 'p': {
+                        state=25;
+                        break;
+                    }
                     case 'f': {
                         state=17;
                         break;
@@ -126,7 +137,7 @@ void processString(char *str) {
                         state=15;
                         break;
                     }
-                    case ' ':break;
+                    //case ' ':break;
                     default: {
                         state=19;
                     }
@@ -290,6 +301,75 @@ void processString(char *str) {
             case 19: { //Identifier
                 if(isValidDelimiter(curChar) || isValidOperator(curChar)) {
                     printToken(str);
+                }
+                break;
+            }
+            case 21: {
+                if(curChar=='l')
+                    state=22;
+                else
+                    state=19;
+                break;
+            }
+            case 22: {
+                if(curChar=='s')
+                    state=23;
+                else
+                    state=19;
+                break;
+            }
+            case 23: {
+                if(curChar=='e')
+                    state=24;
+                else
+                    state=19;
+                break;
+            }
+            case 24: {
+                if(isValidDelimiter(curChar)) {
+                    printf("< keyword , else >\n");
+                    state=0;
+                } break;
+            }
+            case 25: {
+                if(curChar=='r')
+                    state=26;
+                else
+                    state=19;
+                break;
+            }
+            case 26: {
+                if(curChar=='i')
+                    state=27;
+                else
+                    state=19;
+                break;
+            }
+            case 27: {
+                if(curChar=='n')
+                    state=28;
+                else
+                    state=19;
+                break;
+            }
+            case 28: {
+                if(curChar=='t')
+                    state=29;
+                else
+                    state=19;
+                break;
+            }
+            case 29: {
+                if(curChar=='f')
+                    state=30;
+                else
+                    state=19;
+                break;
+            }
+            case 30: {
+                if(isValidDelimiter(curChar)) {
+                    printf("< keyword , printf >\n");
+                    state=0;
                 } break;
             }
         }

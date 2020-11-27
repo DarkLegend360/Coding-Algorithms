@@ -1,9 +1,9 @@
 {
 int num = 9;
-char 9name,place;
-if(num == 9)
+char name9,5place;
+if(num > 9)
 then printf("Greater than 9");
-else printf("Less than or equal to 9");
-for(int t = 0;t < 9; i++)
-{}
+else 
+x=i +name9;
+for(int t = 0;t < 9;t++){}
 }
