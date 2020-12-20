@@ -17,6 +17,7 @@
         "initializer_list": "cpp",
         "regex": "cpp",
         "valarray": "cpp",
-        "sstream": "c"
+        "sstream": "c",
+        "ratio": "cpp"
     }
 }

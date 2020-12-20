@@ -1,6 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Method B
+int longestBalancedSubstring(string str) {
+  int maxLength=0;
+	stack<int> st;
+	st.push(-1);
+	for(int i=0;i<str.size();i++) {
+		if(str[i]=='(')
+			st.push(i);
+		else {
+			st.pop();
+			if(st.empty())
+				st.push(i);
+			else {
+				maxLength=max(maxLength,i-st.top());
+			}
+		}
+	}
+  return maxLength;
+}
+
+
 int main() {
     string s;
     cin>>s;

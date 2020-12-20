@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-char production[20][10];
+char production[20][20];
 char firstTable[20][20];
 char followTable[20][20];
 char inputString[20];
@@ -61,12 +61,16 @@ void buildFollowSet(char rule) {
         followTable[tableIdx][followPointer++] = '$'; 
     for(int i=0;i<productionCount;i++) {
         for(int j=2;production[i][j]!='\0';j++) {
+            printf("%d %d \n",i,j);//TESTTT
+            printf("%c %c \n",rule,production[i][j]);
             if(production[i][j]==rule) {
                 if(production[i][j+1]=='\0' && production[i][0]!=rule)
                     buildFollowSet(production[i][0]);
-                else if(production[i][j+1] != '\0')
-                    followSetHelper(production[i][j+1], i, (j+2)); 
+                else if(production[i][j+1] != '\0'){
+                    printf("Z\n");
+                    followSetHelper(production[i][j+1], i, (j+2)); }
             }
+            printf("Y\n");
         }
     }
 }
@@ -162,7 +166,7 @@ void printParsingTable() {
 
 void main() {
     //-------------|Input Here|-------------//
-    productionCount=6;
+    productionCount=7;
     // strcpy(production[0], "S=A"); 
     // strcpy(production[1], "A=aBC"); 
     // strcpy(production[2], "C=dC"); 
@@ -170,12 +174,32 @@ void main() {
     // strcpy(production[4], "B=b"); 
     // strcpy(production[5], "E=g"); 
     // strcpy(inputString,"abd$");
-    strcpy(production[0], "S=A"); 
-    strcpy(production[1], "A=aBC"); 
-    strcpy(production[2], "C=dC"); 
-    strcpy(production[3], "C=#"); 
-    strcpy(production[4], "B=b"); 
-    strcpy(production[5], "E=g"); 
+
+    strcpy(production[0], "E=TX"); 
+    strcpy(production[1], "T=(E)"); 
+    strcpy(production[2], "T=iY"); 
+    strcpy(production[3], "X=+E"); 
+    strcpy(production[4], "X=#"); 
+    strcpy(production[5], "Y=*T"); 
+    strcpy(production[6], "Y=#"); 
+
+    // strcpy(production[0], "S=Bb"); 
+    // strcpy(production[1], "S=Cd"); 
+    // strcpy(production[2], "B=aB"); 
+    // strcpy(production[3], "B=#"); 
+    // strcpy(production[4], "C=cC"); 
+    // strcpy(production[5], "C=#"); 
+
+    // strcpy(production[0], "S=ACB"); 
+    // strcpy(production[1], "S=CbB"); 
+    // strcpy(production[2], "S=Ba"); 
+    // strcpy(production[3], "A=da"); 
+    // strcpy(production[4], "A=BC"); 
+    // strcpy(production[5], "B=g");
+    // strcpy(production[6], "B=#"); 
+    // strcpy(production[7], "C=h"); 
+    // strcpy(production[8], "C=#");  
+
     strcpy(inputString,"abd$");
     //-------------|Input Ends|-------------//
     for(int i=0;i<productionCount;i++) {
@@ -193,5 +217,5 @@ void main() {
     printFollowTable();
     for(stringLength=0;inputString[stringLength]!='\0';stringLength++);
     //printParsingTable();
-    stringValidation();
+    //stringValidation();
 }

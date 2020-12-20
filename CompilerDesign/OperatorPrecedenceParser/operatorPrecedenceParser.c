@@ -71,3 +71,5 @@ void main() {
     for(inputLength=0;inputString[inputLength]!='\0';inputLength++);
     parseInput();
 }
+
+//(i)
