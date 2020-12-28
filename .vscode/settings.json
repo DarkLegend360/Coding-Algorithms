@@ -18,6 +18,12 @@
         "regex": "cpp",
         "valarray": "cpp",
         "sstream": "c",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "tuple": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "bitset": "cpp",
+        "utility": "cpp"
     }
 }
