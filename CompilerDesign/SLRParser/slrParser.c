@@ -110,7 +110,7 @@ void applyReduction(int reduction) {
 }
 
 void parseString() {
-    stackA[++stackTop]='$';
+    //stackA[++stackTop]='$';
     stackA[++stackTop]='0';
     while(1) {
         printStackContents();
