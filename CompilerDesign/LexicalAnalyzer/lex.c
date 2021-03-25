@@ -19,7 +19,7 @@ bool isValidDelimiter(char s) {
         return true;
         default: return false;
     }
-}// Add printf,else and x= not working
+}
 bool isValidNumber(char* str) 
 { 
     int len = strlen(str); 
@@ -107,7 +107,7 @@ void processString(char *str) {
             printf("< operator , = >\n");
         }
         switch(state) {
-            case 0: {//Initial State
+            case 0: {
                 switch(curChar) {
                     case 'i': {
                         state=1;
@@ -137,7 +137,6 @@ void processString(char *str) {
                         state=15;
                         break;
                     }
-                    //case ' ':break;
                     default: {
                         state=19;
                     }
