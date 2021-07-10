@@ -3,6 +3,9 @@
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio();
+    cin.tie(0);
+    cout.tie(0);
     int t;
     cin>>t;
     for(int x=1;x<=t;x++) {
